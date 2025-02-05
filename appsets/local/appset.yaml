@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-cluster-1
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: app1
+            repoURL: "https://your-git-repo.git"
+            path: apps/app1
+            branch: main
+          - name: app2
+            repoURL: "https://your-git-repo.git"
+            path: apps/app2
+            branch: main
+  template:
+    metadata:
+      name: "{{name}}-{{app_name}}"
+    spec:
+      project: default
+      source:
+        repoURL: "https://github.com/riadhhamdi/sampe-argocd-gitops-apps.git"
+        targetRevision: "{{ branch }}"
+        path: "{{path}}"
+      destination:
+        server: "https://api.cluster-1.openshift.com"
+        namespace: "default"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+
