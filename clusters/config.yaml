@@ -1,0 +1,7 @@
+clusters:
+  - name: aws
+    server: "https://api.cluster-fdq9f.fdq9f.sandbox1598.opentlc.com:6443"
+  - name: remote
+    server: "https://api.cluster-rcf7m.rcf7m.sandbox2418.opentlc.com:6443"
+  - name: in-cluster
+    server: "https://kubernetes.default.svc"
