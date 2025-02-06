@@ -1,0 +1,3 @@
+config:
+  name: portworx
+  server: 'https://api.cluster-rcf7m.rcf7m.sandbox2418.opentlc.com:6443'
